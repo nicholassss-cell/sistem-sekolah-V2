@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controller;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
 class StudentController extends Controller
 {
@@ -12,9 +11,9 @@ class StudentController extends Controller
         return "Menampilkan halaman daftar siswa";
     }
 
-    public function show($id)
+    public function show(string $id)
     {
-        return "Menampilkan siswa dengan ID: {$id}";
+        return "Menampilkan detail siswa dengan ID: {$id}";
     }
 
     public function create()
@@ -22,23 +21,24 @@ class StudentController extends Controller
         return "Menampilkan halaman tambah siswa";
     }
 
-    public function store(Request $request)
+    public function store()
     {
         return "Melakukan penambahan data siswa";
     }
 
-    public function edit($id)
+    public function edit()
     {
         return "Menampilkan halaman edit siswa";
     }
 
-    public function update(Request $request, $id)
+    public function update()
     {
         return "Melakukan perubahan data siswa";
     }
 
-    public function destroy($id)
+    public function destroy()
     {
         return "Menghapus data siswa";
     }
+    
 }

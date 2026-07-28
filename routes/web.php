@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controller\StudentController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SchoolClass\CreateController;
 use App\Http\Controllers\SchoolClass\DestroyController;
 use App\Http\Controllers\SchoolClass\EditController;
@@ -31,22 +31,22 @@ Route::name('students.')->prefix('students')->group(function () {
     })->name('create');
 
     // Halaman Edit Siswa
-    Route::get('/students/{id}/edit', function (string $id) {
+    Route::get('/{id}/edit', function (string $id) {
         return "Ini adalah halaman edit siswa dengan ID: {$id}";
     })->name('edit');
 
     // Logika Tambah Siswa
-    Route::post('/students', function () {
+    Route::post('/', function () {
         return "Menambah data siswa baru";
     })->name('store');
 
     // Logika Edit Siswa
-    Route::put('/students/{id}', function (string $id) {
+    Route::put('/{id}', function (string $id) {
         return "Mengubah data siswa dengan ID: {$id}";
     })->name('update');
 
     // Logika Hapus Siswa
-    Route::delete('/students/{id}', function (string $id) {
+    Route::delete('/{id}', function (string $id) {
         return "menghapus data siswa dengan ID: {$id}";
     })->name('destroy');
 
