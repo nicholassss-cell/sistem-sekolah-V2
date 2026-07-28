@@ -4,7 +4,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/students', [StudentsController::class, 'index'])
+Route::get('/students', [StudentController::class, 'index'])
 ->name('students.index');
 
 Route::get('/', function () {
@@ -13,7 +13,7 @@ Route::get('/', function () {
 
 // Manajemen Siswa
 route::name('students.')->prefix('students')->group(function() {
-        Route::get('/', [StudentsController::class, 'index'])->name('index');
+        Route::get('/', [StudentController::class, 'index'])->name('index');
 
 // Halaman Detail Siswa
 Route::get('/{id}', function($id){
