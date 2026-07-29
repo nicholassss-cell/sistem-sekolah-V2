@@ -22,32 +22,32 @@ Route::name('students.')->prefix('students')->group(function () {
 
     // Halaman Detail Siswa
     Route::get('/{id}', function ($id) {
-        return "Menampilkan detail siswa dengan ID = {$id}";
-    })->name('show');
+        Route::get('/{id}', [StudentController::class, 'show'])->name('show');
+    });
 
     // Halaman Tambah Siswa
     Route::get('/create', function () {
-        return "Ini adalah halaman tambah siswa ";
-    })->name('create');
+         Route::get('/create', [StudentController::class, 'create'])->name('create');
+    });
 
     // Halaman Edit Siswa
     Route::get('/{id}/edit', function (string $id) {
-        return "Ini adalah halaman edit siswa dengan ID: {$id}";
-    })->name('edit');
+       Route::get('/{id}/edit', [StudentController::class, 'edit'])->name('edit');
+    });
 
     // Logika Tambah Siswa
     Route::post('/', function () {
-        return "Menambah data siswa baru";
-    })->name('store');
+        Route::post('/', [StudentController::class, 'store'])->name('store');
+    });
 
     // Logika Edit Siswa
     Route::put('/{id}', function (string $id) {
-        return "Mengubah data siswa dengan ID: {$id}";
-    })->name('update');
+        Route::put('/{id}', [StudentController::class, 'update'])->name('update');
+    });
 
     // Logika Hapus Siswa
     Route::delete('/{id}', function (string $id) {
-        return "menghapus data siswa dengan ID: {$id}";
-    })->name('destroy');
+        Route::delete('/{id}', [StudentController::class, 'destroy'])->name('destroy');
+    });
 
 });
