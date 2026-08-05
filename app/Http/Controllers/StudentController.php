@@ -8,7 +8,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $title = "Sistem Sekolah - Dafta    r Siswa";
+        $title = "Sistem Sekolah - Daftar Siswa";
         $students = [
             [
                 'id' => 1,
@@ -33,19 +33,30 @@ class StudentController extends Controller
     }
     public function show(string $id)
     {
-        return view('students.show');
+        $title = "Sistem Sekolah - Detail Siswa";
+        return view('students.show', [
+            'title' => $title, 
+        ]);
     }
  
-    public function create(){
-        return view('students.create');  
+    public function create()
+    {   
+        $title = "Sistem Sekolah - Tambah Siswa";
+        return view('students.create', [
+            'title' => $title
+        ]);
     }
  
     public function edit(string $id){
         $title = "Sistem Sekolah - Edit Siswa";
-        return view('students.edit');
+        return view('students.edit', [
+            'title' => $title, 
+         ]);
     }
    
-    public function store(){
+    public function store()
+    {
+        $title = "Sistem Sekolah - Tambah Siswa";
         return"Melakukan penambahan data student baru";
     }
  
