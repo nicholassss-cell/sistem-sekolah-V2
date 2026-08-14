@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
 class MajorController extends Controller
 {
@@ -12,7 +11,34 @@ class MajorController extends Controller
      */
     public function index()
     {
-        return "Menampilkan halaman daftar jurusan";
+        $title = 'Sistem Sekolah - Daftar Jurusan';
+
+        $majors = [
+        [
+            'id' => 1,
+            'code' => 'AKL',
+            'name' => 'Akuntansi dan Keuangan Lembaga',
+            'description' => 'Program keahlian yang membekali murid dengan kompetensi pencatatan dan pelaporan keuangan.',
+        ],
+        [
+            'id' => 2,
+            'code' => 'TKJ',
+            'name' => 'Teknik Komputer dan Jaringan',
+            'description' => 'Program keahlian yang membekali murid dengan kompetensi instalasi, konfigurasi, dan pemeliharaan jaringan komputer.',
+        ],
+        [
+            'id' => 3,
+            'code' => 'BD',
+            'name' => 'Bisnis Digital',
+            'description' => 'Program keahlian yang membekali murid dengan kompetensi pemasaran dan pengelolaan bisnis berbasis digital.',
+        ],
+];
+
+
+        return view('majors.index', [
+            'title' => $title,
+            'majors' => $majors,
+        ]);
     }
 
     /**
@@ -20,7 +46,11 @@ class MajorController extends Controller
      */
     public function create()
     {
-        return "Menampilkan halaman tambah jurusan";
+        $title = 'Sistem Sekolah - Tambah Jurusan';
+
+        return view('majors.create', [
+            'title' => $title,
+        ]);
     }
 
     /**
@@ -28,7 +58,7 @@ class MajorController extends Controller
      */
     public function store(Request $request)
     {
-        return "Menyimpan data jurusan baru";
+        return "Melakukan penambahan data jurusan";
     }
 
     /**
@@ -36,7 +66,38 @@ class MajorController extends Controller
      */
     public function show(string $id)
     {
-        return "Menampilkan jurusan dengan ID: {$id}";
+        $title = 'Sistem Sekolah - Detail Jurusan';
+
+        $majors = [
+            [
+                'id' => 1,
+                'code' => 'TI',
+                'name' => 'Teknologi Informasi',
+                'description' => 'Jurusan untuk layanan jaringan dan pemrograman.',
+                'classes_count' => 4,
+            ],
+            [
+                'id' => 2,
+                'code' => 'AK',
+                'name' => 'Akuntansi',
+                'description' => 'Jurusan untuk pembukuan dan keuangan.',
+                'classes_count' => 3,
+            ],
+            [
+                'id' => 3,
+                'code' => 'BI',
+                'name' => 'Bisnis dan Industri',
+                'description' => 'Jurusan untuk manajemen bisnis dan pemasaran.',
+                'classes_count' => 2,
+            ],
+        ];
+
+        $major = collect($majors)->firstWhere('id', (int) $id);
+
+        return view('majors.show', [
+            'title' => $title,
+            'major' => $major,
+        ]);
     }
 
     /**
@@ -44,7 +105,38 @@ class MajorController extends Controller
      */
     public function edit(string $id)
     {
-        return "Menampilkan halaman edit jurusan";
+        $title = 'Sistem Sekolah - Ubah Jurusan';
+
+        $majors = [
+            [
+                'id' => 1,
+                'code' => 'TI',
+                'name' => 'Teknologi Informasi',
+                'description' => 'Jurusan untuk layanan jaringan dan pemrograman.',
+                'classes_count' => 4,
+            ],
+            [
+                'id' => 2,
+                'code' => 'AK',
+                'name' => 'Akuntansi',
+                'description' => 'Jurusan untuk pembukuan dan keuangan.',
+                'classes_count' => 3,
+            ],
+            [
+                'id' => 3,
+                'code' => 'BI',
+                'name' => 'Bisnis dan Industri',
+                'description' => 'Jurusan untuk manajemen bisnis dan pemasaran.',
+                'classes_count' => 2,
+            ],
+        ];
+
+        $major = collect($majors)->firstWhere('id', (int) $id);
+
+        return view('majors.edit', [
+            'title' => $title,
+            'major' => $major,
+        ]);
     }
 
     /**
@@ -60,6 +152,6 @@ class MajorController extends Controller
      */
     public function destroy(string $id)
     {
-        return "Menghapus data siswa";
+        return "Menghapus data jurusan";
     }
 }
