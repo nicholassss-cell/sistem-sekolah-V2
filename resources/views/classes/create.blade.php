@@ -9,7 +9,7 @@
         <p class="mt-1 text-sm text-slate-500">Isi data untuk menambahkan kelas baru ke sistem.</p>
     </div>
 
-    <form action="{{ route('classes.store') }}" method="POST" class="space-y-6 border border-[#E5E3DB] bg-white p-8">
+    <form action="{{ route('students.store') }}" method="POST" class="space-y-6 border border-[#E5E3DB] bg-white p-8">
         @csrf
 
         <div>

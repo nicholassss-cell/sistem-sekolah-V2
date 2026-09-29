@@ -37,7 +37,7 @@
                     Kelamin</label>
                 <select id="gender" name="gender"
                     class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none">
-                    <option value="L">Laki-laki</option>
+                    <option value="Laki-laki">Laki-laki</option>
                     <option value="P">Perempuan</option>
                 </select>
             </div>

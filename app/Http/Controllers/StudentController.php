@@ -40,6 +40,7 @@ class StudentController extends Controller
         ]);
     }
 
+
     public function edit(string $id)
     {
         $title = "Sistem Sekolah - Edit Siswa";
@@ -125,9 +126,15 @@ class StudentController extends Controller
 
 
 
-    public function store()
+    public function store(Request $request)
     {
-        return "Melakukan penambahan data student baru";
+        $$request->validate([
+            'nis' => ['required', 'string', 'size:4', 'unique:students,nis,1'],
+            'name' => ['required', 'string'],
+            'gender' => ['required', 'string', 'in:Laki-laki,Perempuan'],
+            'major' => ['required', 'string', 'in:AKL,TKJ,BID'],
+            'class' => ['required', 'string']
+        ]);
     }
 
     public function update(string $id)
