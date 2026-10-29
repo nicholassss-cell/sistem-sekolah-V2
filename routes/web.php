@@ -14,7 +14,7 @@ use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('students.index');
 });
 
 // Authentication
@@ -22,6 +22,8 @@ Route::get('/login', [AuthController::class, 'loginView'])->name('login-view');
 Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
 Route::get('/register', [AuthController::class, 'registerView'])->name('register-view');
 Route::post('/register', [AuthController::class, 'registerPost'])->name('register.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 
 // Manajemen Guru
 Route::name('teachers.')->prefix('teachers')->group(function () {
@@ -45,15 +47,15 @@ Route::name('students.')->prefix('students')->group(function () {
 
     Route::get('/create', [StudentController::class, 'create'])->name('create');
 
-    Route::get('/{id}', [StudentController::class, 'show'])->name('show');
+    Route::get('/{student}', [StudentController::class, 'show'])->name('show');
 
     Route::post('/', [StudentController::class, 'store'])->name('store');
 
-    Route::get('/{id}/edit', [StudentController::class, 'edit'])->name('edit');
+    Route::get('/{student}/edit', [StudentController::class, 'edit'])->name('edit');
 
-    Route::put('/{id}', [StudentController::class, 'update'])->name('update');
+    Route::put('/{student}', [StudentController::class, 'update'])->name('update');
 
-    Route::delete('/{id}', [StudentController::class, 'destroy'])->name('destroy');
+    Route::delete('/{student}', [StudentController::class, 'destroy'])->name('destroy');
 });
 
 // Manajemen Kelas (Invokable)
